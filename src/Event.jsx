@@ -5,11 +5,23 @@ const Event = () => {
   // Event details
   const eventTitle = "Jd Creation Meetup";
   const eventDescription = "Join us for our fun and exciting event!";
-  const eventLocation = "RJ Atlas Digital AI, thalasery";
+  const eventLocation = "RJ Atlas Digital AI, Thalasery";
 
-  // Event start and end time in UTC (YYYYMMDDTHHMMSSZ)
-  const eventStart = "20251023T163500Z";
-  const eventEnd = "20251025T130000Z";
+  // Event start time in UTC (YYYYMMDDTHHMMSSZ)
+  const eventStart = "20251023T164200Z";
+
+  // Automatically calculate end as 1 hour later
+  const startDate = new Date("2025-10-23T16:35:00Z");
+  const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // +1 hour
+  const pad = (num) => String(num).padStart(2, "0");
+  const formatDate = (date) =>
+    `${date.getUTCFullYear()}${pad(date.getUTCMonth() + 1)}${pad(
+      date.getUTCDate()
+    )}T${pad(date.getUTCHours())}${pad(date.getUTCMinutes())}${pad(
+      date.getUTCSeconds()
+    )}Z`;
+
+  const eventEnd = formatDate(endDate);
 
   // Generate Google Calendar link
   const calendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
