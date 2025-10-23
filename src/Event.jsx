@@ -1,49 +1,50 @@
 import React from "react";
 import "./Event.css";
+import eventBg from "../src/assets/event-bg.jpg"; // import your local image
 
 const Event = () => {
-  // Event details
-  const eventTitle = "Jd Creation Meetup";
-  const eventDescription = "Join us for our fun and exciting event!";
+  const eventTitle = "GIVERS GALA 2.0";
+  const eventSubtitle = "You are cordially invited!";
+  const eventDescription = "Join us for an unforgettable evening of fun and celebration!";
   const eventLocation = "RJ Atlas Digital AI, Thalasery";
 
-  // Event start time in UTC for 4:50 PM IST
-  const eventStart = "20251023T113000Z";
+  // Event start and end for Google Calendar (UTC)
+  const eventStart = "20251107T033000Z"; // 9:00 AM IST → 03:30 UTC
+  const eventEnd = "20251107T043000Z";   // 10:00 AM IST → 04:30 UTC
 
-  // Automatically calculate end as 1 hour later
-  const startDate = new Date("2025-10-23T11:20:00Z");
-  const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // +1 hour
-
-  const pad = (num) => String(num).padStart(2, "0");
-  const formatDate = (date) =>
-    `${date.getUTCFullYear()}${pad(date.getUTCMonth() + 1)}${pad(
-      date.getUTCDate()
-    )}T${pad(date.getUTCHours())}${pad(date.getUTCMinutes())}${pad(
-      date.getUTCSeconds()
-    )}Z`;
-
-  const eventEnd = formatDate(endDate);
-
-  // Generate Google Calendar link
   const calendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
     eventTitle
   )}&dates=${eventStart}/${eventEnd}&details=${encodeURIComponent(
     eventDescription
   )}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`;
 
+  const mapsLink = "https://maps.app.goo.gl/dqmpL9Q5WYCVG1fu5?g_st=iwb";
+
   return (
-    <div className="event-container">
-      <h2 className="event-title">{eventTitle}</h2>
-      <p className="event-details">{eventDescription}</p>
-      <p className="event-location">📍 {eventLocation}</p>
-      <a
-        href={calendarLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="calendar-button"
-      >
-        Add to Google Calendar
-      </a>
+    <div className="event-background" style={{ backgroundImage: `url(${eventBg})` }}>
+      <div className="event-overlay">
+        <h1 className="event-title">{eventTitle}</h1>
+        <h3 className="event-subtitle">{eventSubtitle}</h3>
+
+        <div className="event-buttons">
+          <a
+            href={calendarLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="event-button"
+          >
+            Add to Calendar
+          </a>
+          <a
+            href={mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="event-button"
+          >
+            Location
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
