@@ -8,7 +8,7 @@ const Event = () => {
   const eventLocation = "RJ Atlas Digital AI, Thalasery";
 
   // Event start time in UTC for 4:50 PM IST
-  const eventStart = "20251023T112000Z";
+  const eventStart = "20251023T113000Z";
 
   // Automatically calculate end as 1 hour later
   const startDate = new Date("2025-10-23T11:20:00Z");
