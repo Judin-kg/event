@@ -7,19 +7,20 @@ const Event = () => {
   const eventDescription = "Join us for our fun and exciting event!";
   const eventLocation = "RJ Atlas Digital AI, Thalasery";
 
-  // Event start time in UTC (YYYYMMDDTHHMMSSZ)
- const eventStart = "20251023T111500Z";
+  // Event start time in UTC for 4:50 PM IST
+  const eventStart = "20251023T112000Z";
 
   // Automatically calculate end as 1 hour later
- const startDate = new Date("2025-10-23T11:15:00Z");
-const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // +1 hour
-const pad = (num) => String(num).padStart(2, "0");
-const formatDate = (date) =>
-  `${date.getUTCFullYear()}${pad(date.getUTCMonth() + 1)}${pad(
-    date.getUTCDate()
-  )}T${pad(date.getUTCHours())}${pad(date.getUTCMinutes())}${pad(
-    date.getUTCSeconds()
-  )}Z`;;
+  const startDate = new Date("2025-10-23T11:20:00Z");
+  const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // +1 hour
+
+  const pad = (num) => String(num).padStart(2, "0");
+  const formatDate = (date) =>
+    `${date.getUTCFullYear()}${pad(date.getUTCMonth() + 1)}${pad(
+      date.getUTCDate()
+    )}T${pad(date.getUTCHours())}${pad(date.getUTCMinutes())}${pad(
+      date.getUTCSeconds()
+    )}Z`;
 
   const eventEnd = formatDate(endDate);
 
